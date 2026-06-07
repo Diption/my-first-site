@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>डिल्ली राज - पोर्टफोलियो</title>
-    <!-- Google Fonts प्रयोग गरिएको -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Mukta:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* आधुनिक CSS Variables र Reset */
+        /* आधुनिक CSS Variables */
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #0b0f19;
+            --card-bg: rgba(30, 41, 59, 0.4); /* कार्डलाई हल्का पारदर्शी बनाएको */
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --primary: #38bdf8;
             --accent: #c084fc;
         }
 
-        /* सुइँसुइँ गुड्ने (Smooth Scroll) बनाउने मुख्य जादु */
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px; /* Nav bar ले कभर नगरोस् भनेर स्पेस छोडेको */
+            scroll-padding-top: 90px;
         }
 
         * {
@@ -34,19 +33,61 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding-top: 80px; /* Nav Bar को लागि माथि ठाउँ छोडेको */
+            padding-top: 80px;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* --- NAVIGATION BAR STYLING --- */
+        /* --- ADVANCED ANIMATED BACKGROUND --- */
+        /* ब्याकग्राउन्डमा दुईवटा रङ्गीन प्रकाशका गोलाहरू (Glow Orbs) थपिएको */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: min-content;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulseBg 12s infinite alternate ease-in-out;
+        }
+
+        /* नीलो प्रकाश - बायाँ माथि */
+        body::before {
+            background: var(--primary);
+            top: -10%;
+            left: -10%;
+        }
+
+        /* बैजनी प्रकाश - दायाँ तल */
+        body::after {
+            background: var(--accent);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: 6s; /* यो अलि ढिलो घुम्छ */
+        }
+
+        /* प्रकाशहरू सुस्तरी तैरिने एनिमेसन */
+        @keyframes pulseBg {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, 50px) scale(1.2);
+            }
+        }
+
+        /* --- NAVIGATION BAR --- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(15, 23, 42, 0.85); /* हल्का पारदर्शी ब्लर इफेक्ट */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             z-index: 1000;
             padding: 15px 0;
         }
@@ -78,14 +119,14 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* Container for Content */
+        /* Main Content Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -100,7 +141,7 @@
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
@@ -113,21 +154,30 @@
             color: var(--text-muted);
         }
 
-        /* Section Styling */
+        /* Advanced Section Card Styling (Glassmorphism इफेक्ट) */
         section {
             margin-bottom: 50px;
             background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 35px;
+            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        /* माउस लैजाँदा कार्ड हल्का माथि उठ्ने */
+        section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.2);
         }
 
         h2 {
             font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 20px;
-            border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+            border-bottom: 2px solid rgba(56, 189, 248, 0.1);
             padding-bottom: 8px;
         }
 
@@ -140,22 +190,35 @@
         }
 
         .skill-tag {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-color);
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
             background-color: rgba(56, 189, 248, 0.1);
             color: var(--primary);
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-color: var(--primary);
+            transform: scale(1.05);
         }
 
         /* Projects List */
         .project-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: rgba(192, 132, 252, 0.3);
         }
 
         .project-card h3 {
@@ -165,7 +228,7 @@
 
         .project-card p {
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .project-link {
@@ -182,7 +245,7 @@
         /* Contact Section */
         .contact-text {
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .social-links a {
@@ -190,10 +253,17 @@
             text-decoration: none;
             margin-right: 20px;
             font-weight: 600;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--accent);
+            color: #0b0f19;
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
         }
 
         footer {
@@ -204,23 +274,17 @@
             padding-bottom: 20px;
         }
 
-        /* मोबाइल स्क्रिनको लागि मिलाइएको मेनु */
         @media (max-width: 600px) {
-            .nav-links {
-                gap: 15px;
-            }
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-            header h1 {
-                font-size: 2.2rem;
-            }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.85rem; }
+            header h1 { font-size: 2.5rem; }
+            body::before, body::after { width: 250px; height: 250px; } /* मोबाइलमा सानो बत्ती */
         }
     </style>
 </head>
 <body>
 
-    <!-- नयाँ थपिएको Navigation Bar -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">DR</a>
