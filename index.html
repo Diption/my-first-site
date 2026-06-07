@@ -39,14 +39,12 @@
         }
 
         /* --- ADVANCED ANIMATED BACKGROUND --- */
-        /* ब्याकग्राउन्डमा दुईवटा रङ्गीन प्रकाशका गोलाहरू (Glow Orbs) थपिएको */
         body::before, body::after {
             content: "";
             position: fixed;
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background: min-content;
             filter: blur(120px);
             z-index: -1;
             opacity: 0.3;
@@ -65,17 +63,12 @@
             background: var(--accent);
             bottom: -10%;
             right: -10%;
-            animation-delay: 6s; /* यो अलि ढिलो घुम्छ */
+            animation-delay: 6s;
         }
 
-        /* प्रकाशहरू सुस्तरी तैरिने एनिमेसन */
         @keyframes pulseBg {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(80px, 50px) scale(1.2);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 50px) scale(1.2); }
         }
 
         /* --- NAVIGATION BAR --- */
@@ -154,7 +147,7 @@
             color: var(--text-muted);
         }
 
-        /* Advanced Section Card Styling (Glassmorphism इफेक्ट) */
+        /* Advanced Section Card Styling */
         section {
             margin-bottom: 50px;
             background-color: var(--card-bg);
@@ -167,7 +160,6 @@
             transition: transform 0.4s ease, border-color 0.4s ease;
         }
 
-        /* माउस लैजाँदा कार्ड हल्का माथि उठ्ने */
         section:hover {
             transform: translateY(-5px);
             border-color: rgba(56, 189, 248, 0.2);
@@ -248,22 +240,52 @@
             margin-bottom: 20px;
         }
 
-        .social-links a {
-            color: var(--primary);
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: 600;
-            background: rgba(56, 189, 248, 0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            transition: all 0.3s;
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .social-links a:hover {
-            color: #0b0f19;
+        .social-links a {
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            color: #f8fafc;
+        }
+
+        /* फेसबुक बटन स्टाइल */
+        .fb-btn {
+            background: rgba(24, 119, 242, 0.15);
+            border: 1px solid rgba(24, 119, 242, 0.4);
+        }
+        .fb-btn:hover {
+            background: #1877f2;
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
+            color: #fff !important;
+        }
+
+        /* युट्युब बटन स्टाइल */
+        .yt-btn {
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.4);
+        }
+        .yt-btn:hover {
+            background: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            color: #fff !important;
+        }
+
+        /* ईमेल बटन स्टाइल */
+        .mail-btn {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+        .mail-btn:hover {
             background: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            color: #0b0f19 !important;
         }
 
         footer {
@@ -278,7 +300,7 @@
             .nav-links { gap: 15px; }
             .nav-links a { font-size: 0.85rem; }
             header h1 { font-size: 2.5rem; }
-            body::before, body::after { width: 250px; height: 250px; } /* मोबाइलमा सानो बत्ती */
+            body::before, body::after { width: 250px; height: 250px; }
         }
     </style>
 </head>
@@ -290,8 +312,8 @@
             <a href="#" class="logo">DR</a>
             <ul class="nav-links">
                 <li><a href="#about">बारेमा</a></li>
-                <li><a href="#skills">सीपहरू</a></li>
-                <li><a href="#projects">प्रोजेक्टहरू</a></li>
+                <li><a href="#skills">सामग्रीहरु</a></li>
+                <li><a href="#projects">प्रश्न पत्रहरु</a></li>
                 <li><a href="#contact">सम्पर्क</a></li>
             </ul>
         </div>
@@ -301,55 +323,55 @@
         <!-- Hero Section -->
         <header>
             <h1>नमस्ते, म डिल्ली राज</h1>
-            <p>वेब डेभलपर र प्रविधि प्रेमी</p>
+            <p>गणित तथा विज्ञान शिक्षक | प्रविधि प्रेमी</p>
         </header>
 
         <!-- About Me Section -->
         <section id="about">
             <h2>मेरो बारेमा</h2>
-            <p>म नयाँ-नयाँ प्रविधिहरू सिक्न र तिनको प्रयोग गरेर सुन्दर तथा उपयोगी वेबसाइटहरू बनाउन मन पराउँछु। सफा कोड लेख्नु र प्रयोगकर्तालाई राम्रो अनुभव (User Experience) दिनु मेरो मुख्य उद्देश्य हो।</p>
+            <p>नमस्कार, म डिल्ली राज। म विगत लामो समयदेखि <strong>गणित (Mathematics)</strong> र <strong>विज्ञान (Science)</strong> विषय अध्यापन गराउँदै आएको एक उत्सुक र समर्पित शिक्षक हुँ।</p>
+            <p style="margin-top: 15px; color: var(--text-muted);">विद्यार्थीहरूलाई सुगा रटाई गराउनुभन्दा उनीहरूमा तार्किक क्षमता (Logical Thinking) र वैज्ञानिक दृष्टिकोणको विकास गराउनु मेरो मुख्य उद्देश्य हो। म जटिलभन्दा जटिल गणितीय समस्या र वैज्ञानिक सिद्धान्तहरूलाई सरल, प्रयोगात्मक र प्रविधिको प्रयोग गरेर बुझाउन मन पराउँछु।</p>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Materials Section -->
         <section id="skills">
-            <h2>मेरो सीपहरू (Skills)</h2>
+            <h2>सामग्रीहरु (Materials)</h2>
             <div class="skills-grid">
-                <div class="skill-tag">HTML5</div>
-                <div class="skill-tag">CSS3</div>
-                <div class="skill-tag">JavaScript</div>
-                <div class="skill-tag">Git & GitHub</div>
-                <div class="skill-tag">Vercel</div>
-                <div class="skill-tag">Netlify</div>
+                <div class="skill-tag">गणित (Math)</div>
+                <div class="skill-tag">विज्ञान (Science)</div>
+                <div class="skill-tag">डिजिटल शिक्षण (Digital Teaching)</div>
+                <div class="skill-tag">पाठ्यपुस्तक (Books)</div>
+                <div class="skill-tag">प्रश्नपत्र निर्माण (Exam Creation)</div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Question Papers Section -->
         <section id="projects">
-            <h2>मेरा प्रोजेक्टहरू</h2>
+            <h2>प्रश्न पत्रहरु</h2>
             
             <!-- Project 1 -->
             <div class="project-card">
-                <h3>मेरो पहिलो वेबसाइट</h3>
-                <p>Vercel मा होस्ट गरिएको र नेपालको आधिकारिक .com.np डोमेन जोडिएको मेरो पहिलो व्यक्तिगत वेबसाइट।</p>
-                <a href="https://drpokharel.com.np" class="project-link" target="_blank">प्रोजेक्ट हेर्नुहोस् →</a>
+                <h3>गणित</h3>
+                <p>अभ्यासका लागि गणित विषयका प्रश्न पत्रका मोडेलहरु</p>
+                <a href="https://drpokharel.com.np" class="project-link" target="_blank">हेर्नुहोस् →</a>
             </div>
 
             <!-- Project 2 -->
             <div class="project-card">
-                <h3>आधुनिक पोर्टफोलियो</h3>
-                <p>Netlify मा होस्ट गरिएको यो सुन्दर र आकर्षक डार्क-थिम पोर्टफोलियो वेबसाइट।</p>
-                <a href="#" class="project-link">अहिले हेरिरहनु भएको छ</a>
+                <h3>विज्ञान</h3>
+                <p>अभ्यासका लागि विज्ञान विषयका प्रश्न पत्रका मोडेलहरु</p>
+                <a href="#" class="project-link">हेर्नुहोस् →</a>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact">
             <h2>सम्पर्क</h2>
-            <p class="contact-text">यदि तपाईं मसँग सहकार्य गर्न चाहनुहुन्छ वा कुनै जिज्ञासा छ भने, मलाई निम्न माध्यमबाट सम्पर्क गर्न सक्नुहुन्छ:</p>
+            <p class="contact-text">यदि तपाईं मसँग सहकार्य गर्न चाहनुहुन्छ वा मेरा भिडियोहरू हेर्न चाहनुहुन्छ भने, मलाई निम्न माध्यमबाट सम्पर्क गर्न सक्नुहुन्छ:</p>
             <div class="social-links">
-                <a href="https://github.com/diption7" target="_blank">GitHub</a>
-                <a href="#" target="_blank">Facebook</a>
-                <a href="mailto:your-email@gmail.com">Email</a>
+                <a href="https://facebook.com/diption.pokharel.2025" target="_blank" class="fb-btn">Facebook</a>
+                <a href="https://youtube.com/@onlineeducation3978" target="_blank" class="yt-btn">YouTube</a>
+                <a href="mailto:diptionp@gmail.com" class="mail-btn">Email</a>
             </div>
         </section>
 
