@@ -17,6 +17,12 @@
             --accent: #c084fc;
         }
 
+        /* सुइँसुइँ गुड्ने (Smooth Scroll) बनाउने मुख्य जादु */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px; /* Nav bar ले कभर नगरोस् भनेर स्पेस छोडेको */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,20 +34,69 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 20px;
+            padding-top: 80px; /* Nav Bar को लागि माथि ठाउँ छोडेको */
         }
 
+        /* --- NAVIGATION BAR STYLING --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.85); /* हल्का पारदर्शी ब्लर इफेक्ट */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Container for Content */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         /* Hero Section */
         header {
             text-align: center;
             margin-bottom: 60px;
-            padding: 40px 0;
+            padding: 60px 0 40px 0;
         }
 
         header h1 {
@@ -76,7 +131,7 @@
             padding-bottom: 8px;
         }
 
-        /* Skills Griid */
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -146,10 +201,37 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 60px;
+            padding-bottom: 20px;
+        }
+
+        /* मोबाइल स्क्रिनको लागि मिलाइएको मेनु */
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- नयाँ थपिएको Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">DR</a>
+            <ul class="nav-links">
+                <li><a href="#about">बारेमा</a></li>
+                <li><a href="#skills">सीपहरू</a></li>
+                <li><a href="#projects">प्रोजेक्टहरू</a></li>
+                <li><a href="#contact">सम्पर्क</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <!-- Hero Section -->
