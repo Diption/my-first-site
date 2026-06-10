@@ -896,6 +896,15 @@
             }
         }
     </script>
+<!-- कपीराइटलाई बीचमा देखाउने HTML कोड -->
+<footer style="text-align: center; padding: 20px 0;">
+    <p>&copy; <span id="year"></span> [D.R. Pokharel]. All Rights Reserved.</p>
+</footer>
+
+<!-- आफैं वर्ष परिवर्तन हुने जाभास्क्रिप्ट कोड (यसलाई </body> भन्दा ठीक माथि राख्नुहोला) -->
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
 
 </body>
 </html>
